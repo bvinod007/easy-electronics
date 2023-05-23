@@ -53,9 +53,15 @@ MIDDLEWARE = [
 ]
 
 CORS_ALLOWED_ORIGINS = [
-    'http://localhost:4200',  # Add your Angular app's URL here
+    'http://localhost:4200',   # Add your Angular app's URL here
     # Other allowed origins...
 ]
+
+REST_FRAMEWORK = {
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_simplejwt.authentication.JWTAuthentication',
+    )
+}
 
 ROOT_URLCONF = 'easyelectronics.urls'
 
@@ -83,9 +89,12 @@ WSGI_APPLICATION = 'easyelectronics.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
-    }
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'testdb',
+        'USER': 'pgadmin',
+        'PASSWORD': 'secure_password',
+        'HOST': 'localhost'
+    },
 }
 
 
